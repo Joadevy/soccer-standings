@@ -21,6 +21,7 @@ const getStandings = async(endpoint) => {
         let div = document.createElement('div');
         for (let team in response.data['standings']) {
             console.log(response.data['standings'][team].team.name);
+            console.log(response.data['standings'][team].team); // There are the logo of each team.
         }
         document.getElementById('info').appendChild(div);
     } catch (error) {
@@ -34,7 +35,7 @@ function encodeQueryData(data){
     return result;
 }
 
-let league = 'arg.1';
+let league = 'arg.1'; // ita.1, ger.1, eng.1, fra.1, arg.1
 let season = '2019';
 
 let data = {
