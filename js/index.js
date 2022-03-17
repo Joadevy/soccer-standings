@@ -21,7 +21,14 @@ const getStandings = async(endpoint) => {
         let div = document.createElement('div');
         for (let team in response.data['standings']) {
             console.log(response.data['standings'][team].team.name);
-            console.log(response.data['standings'][team].team); // There are the logo of each team.
+            console.log(response.data['standings'][team].team.logos[0].href); // There are the logo of each team.
+            let logo = document.createElement('img');
+            logo.src = response.data['standings'][team].team.logos[0].href;
+            document.getElementById('info').appendChild(logo);
+            let name = document.createElement('p');
+            name.textContent = response.data['standings'][team].team.name;
+            document.getElementById('info').appendChild(name);
+            
         }
         document.getElementById('info').appendChild(div);
     } catch (error) {
