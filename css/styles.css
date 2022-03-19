@@ -1,5 +1,23 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+#info {
+    border: 1px solid red;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+}
+
+.team-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.team-logo, .team-name {
+    width: 150px;
 }
 
