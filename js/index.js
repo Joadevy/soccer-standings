@@ -54,7 +54,12 @@ const getStandings = async(endpoint) => {
             div.appendChild(name);
             fragment.appendChild(div);
         }
-        document.getElementById('info').appendChild(fragment); // Rendering in the HTML.
+        if (document.getElementById('info').firstElementChild == ''){
+            document.getElementById('info').appendChild(fragment); // Rendering in the HTML.
+        } else {
+            document.getElementById('info').textContent = ''; // Removing the previous teams/logos.
+            document.getElementById('info').appendChild(fragment); // Rendering in the HTML.
+        }
     } catch (error) {
         console.log(error);
     }
