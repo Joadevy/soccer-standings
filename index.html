@@ -9,7 +9,6 @@
     <link rel="shortcut icon" href="assets/icons/favicon.png" type="image/x-icon">
 </head>
 <body id="body">
-    <script src="js/index.js"></script>
     <header>
         <H1>Welcome to SoccerStandings</H1>
         <p>Search the historical standings of your favourite football league!</p>
@@ -17,7 +16,7 @@
 
     <main>
         <form id="search-form">
-            <select name="league" id="league">
+            <select name="league" id="select-league">
                 <option value="" disabled selected>Select league:</option>
                 <option value="eng.1">English Premier League</option>
                 <option value="ita.1">Italian Serie A</option>
@@ -26,18 +25,21 @@
                 <option value="arg.1">Argentinian LPF</option>
             </select>
 
-            <select name="year" id="year">
+            <select name="year" id="select-year">
                 <option value="" disabled selected>Select year:</option>
-                <option value="2001">2001</option>
-                <option value="2002">2002</option>
-                <option value="2003">2003</option>
-                <option value="2004">2004</option>
-                <option value="2005">2005</option>
+                <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
             </select>
             
-            <button type="submit">Submit</button>
+            <button type="submit" id="submit">Submit</button>
         </form>
         <div id="info"></div>
     </main>
+    <script src="js/index.js"></script>
 </body>
 </html>
