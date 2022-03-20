@@ -1,6 +1,26 @@
 let endpoint = "https://api-football-standings.azharimm.site/leagues";
-body = document.getElementById('body');
-container = document.getElementById('info');
+let container = document.getElementById('info');
+let submitBtn = document.getElementById('submit');
+let selectedLeague = document.getElementById('select-league');
+let selectedYear = document.getElementById('select-year');
+let league;// ita.1, ger.1, eng.1, fra.1, arg.1
+let season; 
+let data;
+
+submitBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (selectedLeague.value != '' && selectedYear.value != ''){
+        league = selectedLeague.value;
+        console.log(league);
+        season = selectedYear.value;
+        console.log(season);
+        data = {
+            'league': league,
+            'season': season
+        }
+        getStandings(endpoint+encodeQueryData(data));
+    }
+})
 
 /* const getLogo = async() => {
     try {
@@ -18,10 +38,10 @@ const getStandings = async(endpoint) => {
     try {
         let request = await fetch(endpoint);
         let response = await request.json();
-        let fragment =document.createDocumentFragment();
+        let fragment = document.createDocumentFragment();
         for (let team in response.data['standings']) {
-            console.log(response.data['standings'][team].team.name); // Shows the name of each team
-            console.log(response.data['standings'][team].team.logos[0].href); // Shows the logo of each team
+            //console.log(response.data['standings'][team].team.name); // Shows the name of each team
+            //console.log(response.data['standings'][team].team.logos[0].href); // Shows the logo of each team
             let div = document.createElement('div');
             div.classList.add('team-container');
             let logo = document.createElement('img');
@@ -46,15 +66,9 @@ function encodeQueryData(data){
     return result;
 }
 
-let league = 'fra.1'; // ita.1, ger.1, eng.1, fra.1, arg.1
-let season = '2019';
-
-let data = {
-    'league': league,
-    'season': season
-}
-
 endpoint = 'https://api-football-standings.azharimm.site/leagues/';
-console.log(endpoint+encodeQueryData(data));
+//console.log(endpoint+encodeQueryData(data));
 //getLogo();
-getStandings(endpoint+encodeQueryData(data));
+//getStandings(endpoint+encodeQueryData(data));
+
+
