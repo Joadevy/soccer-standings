@@ -42,16 +42,19 @@ const getStandings = async(endpoint) => {
         for (let team in response.data['standings']) {
             //console.log(response.data['standings'][team].team.name); // Shows the name of each team
             //console.log(response.data['standings'][team].team.logos[0].href); // Shows the logo of each team
-            let div = document.createElement('div');
-            div.classList.add('team-container');
-            let logo = document.createElement('img');
+            //let div = document.createElement('div');
+            //div.classList.add('team-container');
+            //let logo = document.createElement('img');
+            let div = createDiv();
+            let logo = div.firstElementChild; // Selecting the img tag
             logo.src = response.data['standings'][team].team.logos[0].href;
-            logo.classList.add('team-logo');
-            div.appendChild(logo);
-            let name = document.createElement('p');
+            //logo.classList.add('team-logo');
+            //div.appendChild(logo);
+           // let name = document.createElement('p');
+            let name = div.lastElementChild; // selecting the p tag
             name.textContent = response.data['standings'][team].team.name;
             name.classList.add('team-name');
-            div.appendChild(name);
+            //div.appendChild(name);
             fragment.appendChild(div);
         }
         if (document.getElementById('info').firstElementChild == ''){
@@ -69,6 +72,17 @@ function encodeQueryData(data){
     let result = [];
         result.push(encodeURIComponent(data['league']) + '/standings?season=' + encodeURIComponent(data['season'])+'&sort=asc');
     return result;
+}
+
+const createDiv = () => {
+    let div = document.createElement('div');
+    div.classList.add('team-container');
+    let logo = document.createElement('img');
+    div.appendChild(logo);
+    let name = document.createElement('p');
+    name.classList.add('team-name');
+    div.appendChild(name);
+    return div;
 }
 
 endpoint = 'https://api-football-standings.azharimm.site/leagues/';
