@@ -9,7 +9,7 @@ let data;
 
 submitBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    if (selectedLeague.value != '' && selectedYear.value != ''){
+    if (selectedLeague.value != '' && selectedYear.value != ''){ // I think It should check if the new request is different than the previous
         league = selectedLeague.value;
         console.log(league);
         season = selectedYear.value;
@@ -40,21 +40,11 @@ const getStandings = async(endpoint) => {
         let response = await request.json();
         let fragment = document.createDocumentFragment();
         for (let team in response.data['standings']) {
-            //console.log(response.data['standings'][team].team.name); // Shows the name of each team
-            //console.log(response.data['standings'][team].team.logos[0].href); // Shows the logo of each team
-            //let div = document.createElement('div');
-            //div.classList.add('team-container');
-            //let logo = document.createElement('img');
-            let div = createDiv();
+            let div = createDiv_With_Logo_And_Name();
             let logo = div.firstElementChild; // Selecting the img tag
             logo.src = response.data['standings'][team].team.logos[0].href;
-            //logo.classList.add('team-logo');
-            //div.appendChild(logo);
-           // let name = document.createElement('p');
             let name = div.lastElementChild; // selecting the p tag
             name.textContent = response.data['standings'][team].team.name;
-            name.classList.add('team-name');
-            //div.appendChild(name);
             fragment.appendChild(div);
         }
         if (document.getElementById('info').firstElementChild == ''){
@@ -74,10 +64,12 @@ function encodeQueryData(data){
     return result;
 }
 
-const createDiv = () => {
+// Creating the function for handling the elements of the API response (logo and name of each team)
+const createDiv_With_Logo_And_Name= () => {
     let div = document.createElement('div');
     div.classList.add('team-container');
     let logo = document.createElement('img');
+    logo.classList.add('team-logo');
     div.appendChild(logo);
     let name = document.createElement('p');
     name.classList.add('team-name');
