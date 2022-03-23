@@ -1,13 +1,14 @@
 let endpoint = 'https://api-football-standings.azharimm.site/leagues/';
 let container = document.getElementById('info');
-let submitBtn = document.getElementById('submit');
 let selectedLeague = document.getElementById('select-league');
 let selectedYear = document.getElementById('select-year');
 
+// Setting the listener for each select to start the requests.
+selectedYear.addEventListener("click", () => startRequest());
+selectedLeague.addEventListener("click", () => startRequest());
 
-// Defining the listener to search for the league and season that the user has entered.
-submitBtn.addEventListener("click", (e) => {
-    e.preventDefault();
+// Saves the league and season that the user has entered and calls the function for the request.
+const startRequest = () => {
     if (selectedLeague.value != '' && selectedYear.value != ''){ // I think It should check if the new request is different than the previous
         let league = selectedLeague.value; // ita.1, ger.1, eng.1, fra.1, arg.1
         let season = selectedYear.value;
@@ -17,19 +18,7 @@ submitBtn.addEventListener("click", (e) => {
         }
         getStandings(endpoint+encodeQueryData(data));
     }
-})
-
-/* const getLogo = async() => {
-    try {
-        let request = await fetch(endpoint);
-        let response = await request.json();
-        let img = document.createElement('img');
-        img.src = response.data[5].logos.light;
-        document.getElementById('info').appendChild(img);
-    } catch (error) {
-        console.log(error);
-    }
-} */
+}
 
 // Appends the name and logo for each team into the DOM.
 const getStandings = async(endpoint) => {
