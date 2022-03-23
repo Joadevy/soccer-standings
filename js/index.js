@@ -5,13 +5,12 @@ let selectedLeague = document.getElementById('select-league');
 let selectedYear = document.getElementById('select-year');
 
 
+// Defining the listener to search for the league and season that the user has entered.
 submitBtn.addEventListener("click", (e) => {
     e.preventDefault();
     if (selectedLeague.value != '' && selectedYear.value != ''){ // I think It should check if the new request is different than the previous
         let league = selectedLeague.value; // ita.1, ger.1, eng.1, fra.1, arg.1
-        console.log(league);
         let season = selectedYear.value;
-        console.log(season);
         let data = {
             'league': league,
             'season': season
@@ -32,6 +31,7 @@ submitBtn.addEventListener("click", (e) => {
     }
 } */
 
+// Appends the name and logo for each team into the DOM.
 const getStandings = async(endpoint) => {
     try {
         let request = await fetch(endpoint);
@@ -56,6 +56,7 @@ const getStandings = async(endpoint) => {
     }
 }
 
+// Makes the GET request URL
 function encodeQueryData(data){
     let result = [];
         result.push(encodeURIComponent(data['league']) + '/standings?season=' + encodeURIComponent(data['season'])+'&sort=asc');
