@@ -1,20 +1,18 @@
-let endpoint = "https://api-football-standings.azharimm.site/leagues";
+let endpoint = 'https://api-football-standings.azharimm.site/leagues/';
 let container = document.getElementById('info');
 let submitBtn = document.getElementById('submit');
 let selectedLeague = document.getElementById('select-league');
 let selectedYear = document.getElementById('select-year');
-let league;// ita.1, ger.1, eng.1, fra.1, arg.1
-let season; 
-let data;
+
 
 submitBtn.addEventListener("click", (e) => {
     e.preventDefault();
     if (selectedLeague.value != '' && selectedYear.value != ''){ // I think It should check if the new request is different than the previous
-        league = selectedLeague.value;
+        let league = selectedLeague.value; // ita.1, ger.1, eng.1, fra.1, arg.1
         console.log(league);
-        season = selectedYear.value;
+        let season = selectedYear.value;
         console.log(season);
-        data = {
+        let data = {
             'league': league,
             'season': season
         }
@@ -76,10 +74,5 @@ const createDiv_With_Logo_And_Name= () => {
     div.appendChild(name);
     return div;
 }
-
-endpoint = 'https://api-football-standings.azharimm.site/leagues/';
-//console.log(endpoint+encodeQueryData(data));
-//getLogo();
-//getStandings(endpoint+encodeQueryData(data));
 
 
