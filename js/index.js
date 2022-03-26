@@ -28,9 +28,18 @@ const getStandings = async(endpoint) => {
         let fragment = document.createDocumentFragment();
         for (let team in response.data['standings']) {
             let div = createDiv_With_Logo_And_Name();
+            let name;
+            if (team == 0) {
+                let champion = document.createElement('p');
+                champion.textContent = 'Champion';
+                champion.classList.add('champion-text');
+                div.appendChild(champion);
+                name = div.lastElementChild.previousSibling; // selecting the p tag
+            } else {
+                name = div.lastElementChild
+            }
             let logo = div.firstElementChild; // Selecting the img tag
             logo.src = response.data['standings'][team].team.logos[0].href; // linking the team logo's from the API.
-            let name = div.lastElementChild; // selecting the p tag
             name.textContent = response.data['standings'][team].team.name; // Linking the team name's from the API.
             fragment.appendChild(div);
         }
