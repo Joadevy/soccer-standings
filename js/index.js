@@ -10,18 +10,18 @@ selectedLeague.addEventListener("click", () => startRequest());
 const startRequest = () => {
     let endpoint = 'https://api-football-standings.azharimm.site/leagues/';
     if (selectedLeague.value != '' && selectedYear.value != ''){ // I think It should check if the new request is different than the previous
-        let league = selectedLeague.value; // ita.1, ger.1, eng.1, fra.1, arg.1
+        let league = selectedLeague.value; // ita.1, ger.1, eng.1, fra.1, arg.1, bra.1
         let season = selectedYear.value;
         let data = {
             'league': league,
             'season': season
         }
-        getStandings(endpoint+encodeQueryData(data));
+        getStandings(endpoint+encodeQueryData(data),data.league);
     }
 }
 
 // Appends the name and logo for each team into the DOM.
-const getStandings = async(endpoint) => {
+const getStandings = async(endpoint,league) => {
     try {
         let request = await fetch(endpoint);
         let response = await request.json();
@@ -31,7 +31,7 @@ const getStandings = async(endpoint) => {
             let name;
             if (team == 0) {
                 let champion = document.createElement('p');
-                champion.textContent = 'Champion';
+                translateChampion(champion,league);
                 champion.classList.add('champion-text');
                 div.appendChild(champion);
                 name = div.lastElementChild.previousSibling; // selecting the p tag
@@ -59,6 +59,21 @@ function encodeQueryData(data){
     let result = [];
         result.push(encodeURIComponent(data['league']) + '/standings?season=' + encodeURIComponent(data['season'])+'&sort=asc');
     return result;
+}
+
+// Add the 'champion' in the language of the league.
+const translateChampion = (element,league) => {
+    if (league == 'arg.1'){
+        element.textContent = 'Campeón';
+    } else if (league  == 'ger.1'){
+        element.textContent = 'Siéger';
+    } else if (league  == 'ita.1'){
+        element.textContent = 'Campione';
+    } else if (league  == 'bra.1'){
+        element.textContent = 'Campeão';
+    } else { 
+        element.textContent = 'Champion'; // for eng.1 && fra.1
+    }
 }
 
 // Creating the function for handling the elements of the API response (logo and name of each team)
