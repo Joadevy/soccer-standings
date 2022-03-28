@@ -23,41 +23,22 @@ const startRequest = () => {
             'league': league,
             'season': season
         }
-        getStandings(endpoint+encodeQueryData(data),data.league);
+        getData(endpoint+encodeQueryData(data));
     }
 }
 
-// Appends the name and logo for each team into the DOM.
-const getStandings = async(endpoint,league) => {
+// Gets the data and stores it in an array.
+const getData = async(endpoint) => {
     try {
         let request = await fetch(endpoint);
         let response = await request.json();
-        let fragment = document.createDocumentFragment();
+        let arrayDataTeams = [];
         for (let team in response.data['standings']) {
-            let div = createDiv_With_Logo_And_Name();
-            let name;
-            if (team == 0) {
-                let champion = document.createElement('p');
-                translateChampion(champion,league);
-                champion.classList.add('champion-text');
-                div.appendChild(champion);
-                name = div.lastElementChild.previousSibling; // selecting the p tag
-            } else {
-                name = div.lastElementChild
-            }
-            let logo = div.firstElementChild; // Selecting the img tag
-            logo.src = response.data['standings'][team].team.logos[0].href; // linking the team logo's from the API.
-            name.textContent = response.data['standings'][team].team.name; // Linking the team name's from the API.
-            fragment.appendChild(div);
+            arrayDataTeams.push(response.data['standings'][team]);
         }
-        if (document.getElementById('info').firstElementChild == ''){
-            document.getElementById('info').appendChild(fragment); // Rendering in the HTML.
-        } else {
-            document.getElementById('info').textContent = ''; // Removing the previous teams/logos.
-            document.getElementById('info').appendChild(fragment); // Rendering in the HTML.
-        }
+        displayTeams(arrayDataTeams);
     } catch (error) {
-        console.log(error);
+        console.log(error); // There will display an screen with the error.
     }
 }
 
@@ -98,4 +79,36 @@ const createDiv_With_Logo_And_Name= () => {
     return div;
 }
 
+const podium = (winner,secondplace,thirdplace) => {
+    //console.log(winner.team.logos[0].href);
+    console.log(winner.team.name);
+    console.log(secondplace.team.name);
+    console.log(thirdplace.team.name);
+    //console.log(secondplace,thirdplace);
+}
 
+const displayTeams = (arrayTeams) => {
+            let winner, secondplace, thirdplace;
+            let fragment = document.createDocumentFragment();
+            for (let team in arrayTeams) {
+                if (team == 0) { // Selecting the champion, subchampion and third-place.
+                    winner = arrayTeams[team];
+                    secondplace = arrayTeams[1];
+                    thirdplace = arrayTeams[2];
+                    podium(winner,secondplace,thirdplace);
+                } else if (team != 1 && team != 2) { // Selecting the rest of the teams.
+                    let div = createDiv_With_Logo_And_Name();
+                    let name = div.lastElementChild;
+                    let logo = div.firstElementChild; // Selecting the img tag
+                    logo.src = arrayTeams[team].team.logos[0].href; // linking the team logo's from the API.
+                    name.textContent = arrayTeams[team].team.name; // Linking the team name's from the API.
+                    fragment.appendChild(div);
+                }
+            }
+        if (document.getElementById('info').firstElementChild == ''){
+            document.getElementById('info').appendChild(fragment); // Rendering in the HTML.
+        } else {
+            document.getElementById('info').textContent = ''; // Removing the previous teams/logos.
+            document.getElementById('info').appendChild(fragment); // Rendering in the HTML.
+        }
+}
