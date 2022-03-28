@@ -1,10 +1,17 @@
+/* --------------- Getting page elements --------------- */
 let container = document.getElementById('info');
 let selectedLeague = document.getElementById('select-league');
 let selectedYear = document.getElementById('select-year');
 
+
+/* --------------- Handling the event listeners --------------- */
+
 // Setting the listener for each select to start the requests.
 selectedYear.addEventListener("click", () => startRequest());
 selectedLeague.addEventListener("click", () => startRequest());
+
+
+/* --------------- Handling API data requests --------------- */
 
 // Saves the league and season that the user has entered and calls the function for the request.
 const startRequest = () => {
@@ -61,6 +68,8 @@ function encodeQueryData(data){
     return result;
 }
 
+/* ---------------  General functions --------------- */
+
 // Add the 'champion' in the language of the league.
 const translateChampion = (element,league) => {
     if (league == 'arg.1'){
@@ -88,3 +97,5 @@ const createDiv_With_Logo_And_Name= () => {
     div.appendChild(name);
     return div;
 }
+
+
