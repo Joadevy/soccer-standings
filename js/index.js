@@ -36,7 +36,7 @@ const getData = async(endpoint) => {
         for (let team in response.data['standings']) {
             arrayDataTeams.push(response.data['standings'][team]);
         }
-        displayTeams(arrayDataTeams);
+        filteringTeams(arrayDataTeams);
     } catch (error) {
         console.log(error); // There will display an screen with the error.
     }
@@ -79,6 +79,7 @@ const createDiv_With_Logo_And_Name= () => {
     return div;
 }
 
+// Handling the podium
 const podium = (winner,secondplace,thirdplace) => {
     //console.log(winner.team.logos[0].href);
     console.log(winner.team.name);
@@ -87,9 +88,11 @@ const podium = (winner,secondplace,thirdplace) => {
     //console.log(secondplace,thirdplace);
 }
 
-const displayTeams = (arrayTeams) => {
+// Filtering by podium or not teams.
+const filteringTeams = (arrayTeams) => {
+            let arrayNotPodium = [];
             let winner, secondplace, thirdplace;
-            let fragment = document.createDocumentFragment();
+            //let fragment = document.createDocumentFragment();
             for (let team in arrayTeams) {
                 if (team == 0) { // Selecting the champion, subchampion and third-place.
                     winner = arrayTeams[team];
@@ -97,18 +100,26 @@ const displayTeams = (arrayTeams) => {
                     thirdplace = arrayTeams[2];
                     podium(winner,secondplace,thirdplace);
                 } else if (team != 1 && team != 2) { // Selecting the rest of the teams.
+                    arrayNotPodium.push(arrayTeams[team]);
+                    printingTeams(arrayNotPodium);
+                }
+            }
+}
+
+const printingTeams = (arrayNotPodium) =>{
+    let fragment = document.createDocumentFragment();
+    for (let team in arrayNotPodium) {
                     let div = createDiv_With_Logo_And_Name();
                     let name = div.lastElementChild;
                     let logo = div.firstElementChild; // Selecting the img tag
-                    logo.src = arrayTeams[team].team.logos[0].href; // linking the team logo's from the API.
-                    name.textContent = arrayTeams[team].team.name; // Linking the team name's from the API.
+                    logo.src = arrayNotPodium[team].team.logos[0].href; // linking the team logo's from the API.
+                    name.textContent = arrayNotPodium[team].team.name; // Linking the team name's from the API.
                     fragment.appendChild(div);
-                }
-            }
-        if (document.getElementById('info').firstElementChild == ''){
-            document.getElementById('info').appendChild(fragment); // Rendering in the HTML.
-        } else {
-            document.getElementById('info').textContent = ''; // Removing the previous teams/logos.
-            document.getElementById('info').appendChild(fragment); // Rendering in the HTML.
-        }
+    }
+    if (document.getElementById('info').firstElementChild == ''){
+        document.getElementById('info').appendChild(fragment); // Rendering in the HTML.
+    } else {
+        document.getElementById('info').textContent = ''; // Removing the previous teams/logos.
+        document.getElementById('info').appendChild(fragment); // Rendering in the HTML.
+    }
 }
