@@ -9,6 +9,8 @@
     flex-wrap: wrap;
     gap: 2.5rem;
     margin: .75rem;
+    align-items: center;
+    justify-content: center;
 }
 
 #info>:first-child {
