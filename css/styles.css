@@ -13,9 +13,9 @@
     justify-content: center;
 }
 
-#info>:first-child {
+/* #info>:first-child { // This isn't the way for border the champion element.
     border: 1px solid goldenrod;
-}
+} */
 
 .champion-text {
     color: goldenrod;
