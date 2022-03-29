@@ -90,20 +90,12 @@ const podium = (winner,secondplace,thirdplace) => {
 
 // Filtering by podium or not teams.
 const filteringTeams = (arrayTeams) => {
-            let arrayNotPodium = [];
-            let winner, secondplace, thirdplace;
+            //let winner, secondplace, thirdplace;
             //let fragment = document.createDocumentFragment();
-            for (let team in arrayTeams) {
-                if (team == 0) { // Selecting the champion, subchampion and third-place.
-                    winner = arrayTeams[team];
-                    secondplace = arrayTeams[1];
-                    thirdplace = arrayTeams[2];
-                    podium(winner,secondplace,thirdplace);
-                } else if (team != 1 && team != 2) { // Selecting the rest of the teams.
-                    arrayNotPodium.push(arrayTeams[team]);
-                    printingTeams(arrayNotPodium);
-                }
-            }
+            const [winner,secondplace,thirdplace, ...arrayNotPodium] = arrayTeams;
+            printingTeams(arrayNotPodium);
+            podium(winner,secondplace,thirdplace);
+                
 }
 
 const printingTeams = (arrayNotPodium) =>{
