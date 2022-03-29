@@ -3,8 +3,11 @@
     padding: 0;
     box-sizing: border-box;
 }
+#podium {
+    height: 50vh;
+}
 
-#info {
+#notpodium {
     display: flex;
     flex-wrap: wrap;
     gap: 2.5rem;
