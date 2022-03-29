@@ -2,6 +2,8 @@
 let container = document.getElementById('info');
 let selectedLeague = document.getElementById('select-league');
 let selectedYear = document.getElementById('select-year');
+let notPodiumContainer = document.getElementById('notpodium');
+let podiumContainer = document.getElementById('podium');
 
 
 /* --------------- Handling the event listeners --------------- */
@@ -36,7 +38,7 @@ const getData = async(endpoint) => {
         for (let team in response.data['standings']) {
             arrayDataTeams.push(response.data['standings'][team]);
         }
-        filteringTeams(arrayDataTeams);
+        filterTeams(arrayDataTeams);
     } catch (error) {
         console.log(error); // There will display an screen with the error.
     }
@@ -79,39 +81,45 @@ const createDiv_With_Logo_And_Name= () => {
     return div;
 }
 
+// Filtering by podium or not teams.
+const filterTeams = (arrayTeams) => {
+            const [winner,secondplace,thirdplace, ...arrayNotPodium] = arrayTeams; // Creating the variables using destructuring
+            addTeams(arrayNotPodium,'notpodium');
+            podium(winner,secondplace,thirdplace); 
+}
+
+const addTeams = (array,typeTeams) =>{
+    let fragment = document.createDocumentFragment();
+    for (let team in array) {
+                    let div = createDiv_With_Logo_And_Name();
+                    let name = div.lastElementChild;
+                    let logo = div.firstElementChild; // Selecting the img tag
+                    logo.src = array[team].team.logos[0].href; // linking the team logo's from the API.
+                    name.textContent = array[team].team.name; // Linking the team name's from the API.
+                    fragment.appendChild(div);
+    }
+    if (typeTeams == 'podium'){
+
+    } else if (typeTeams == 'notpodium'){
+        printNotPodium(fragment);
+    }
+}
+
+const printNotPodium = (fragment) => {
+    if (notPodiumContainer.firstElementChild == ''){
+        notPodiumContainer.appendChild(fragment); // Rendering in the HTML.
+    } else {
+        notPodiumContainer.textContent = ''; // Removing the previous teams/logos.
+        notPodiumContainer.appendChild(fragment); // Rendering in the HTML.
+    }
+}
+
 // Handling the podium
-const podium = (winner,secondplace,thirdplace) => {
+const podium = (...arrPodium) => {
+    console.log(arrPodium); // Its an array with the winner, second and thirdplace
     //console.log(winner.team.logos[0].href);
     console.log(winner.team.name);
     console.log(secondplace.team.name);
     console.log(thirdplace.team.name);
     //console.log(secondplace,thirdplace);
-}
-
-// Filtering by podium or not teams.
-const filteringTeams = (arrayTeams) => {
-            //let winner, secondplace, thirdplace;
-            //let fragment = document.createDocumentFragment();
-            const [winner,secondplace,thirdplace, ...arrayNotPodium] = arrayTeams;
-            printingTeams(arrayNotPodium);
-            podium(winner,secondplace,thirdplace);
-                
-}
-
-const printingTeams = (arrayNotPodium) =>{
-    let fragment = document.createDocumentFragment();
-    for (let team in arrayNotPodium) {
-                    let div = createDiv_With_Logo_And_Name();
-                    let name = div.lastElementChild;
-                    let logo = div.firstElementChild; // Selecting the img tag
-                    logo.src = arrayNotPodium[team].team.logos[0].href; // linking the team logo's from the API.
-                    name.textContent = arrayNotPodium[team].team.name; // Linking the team name's from the API.
-                    fragment.appendChild(div);
-    }
-    if (document.getElementById('info').firstElementChild == ''){
-        document.getElementById('info').appendChild(fragment); // Rendering in the HTML.
-    } else {
-        document.getElementById('info').textContent = ''; // Removing the previous teams/logos.
-        document.getElementById('info').appendChild(fragment); // Rendering in the HTML.
-    }
 }
