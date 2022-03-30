@@ -3,13 +3,16 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 #podium {
+    margin: 0 auto;
     height: 35vh;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: .75rem;
     position: relative;
+    width: 500px; /* It needs to change for responsive */
 }
 
 #podium>:first-child {
@@ -20,14 +23,14 @@
 #podium>:nth-child(2){
     position: absolute;
     border:1.5px solid silver;
-    left: 30%;
+    left: 0;
     bottom: 0;
 }
 
 #podium>:last-child{
     position: absolute;
     border:1.5px solid darkgoldenrod;
-    right: 30%;
+    right: 0;
     bottom: 0;
 }
 
@@ -39,10 +42,6 @@
     align-items: center;
     justify-content: center;
 }
-
-/* #info>:first-child { // This isn't the way for border the champion element.
-    border: 1px solid goldenrod;
-} */
 
 .champion-text {
     color: goldenrod;
