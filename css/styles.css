@@ -4,7 +4,31 @@
     box-sizing: border-box;
 }
 #podium {
-    height: 50vh;
+    height: 35vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .75rem;
+    position: relative;
+}
+
+#podium>:first-child {
+    border:1.5px solid goldenrod;
+    position: absolute;
+}
+
+#podium>:nth-child(2){
+    position: absolute;
+    border:1.5px solid silver;
+    left: 30%;
+    bottom: 0;
+}
+
+#podium>:last-child{
+    position: absolute;
+    border:1.5px solid darkgoldenrod;
+    right: 30%;
+    bottom: 0;
 }
 
 #notpodium {
@@ -29,8 +53,9 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    border: 1px solid darkgray;
+    border: 1px solid blanchedalmond;
     border-radius: 10px;
+    height: 200px;
 }
 
 .team-logo, .team-name {
