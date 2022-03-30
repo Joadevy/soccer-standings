@@ -24,7 +24,7 @@
     position: absolute;
     border:1.5px solid silver;
     left: 0;
-    bottom: 0;
+    bottom: 5px;
 }
 
 #podium>:last-child{
@@ -32,15 +32,6 @@
     border:1.5px solid darkgoldenrod;
     right: 0;
     bottom: 0;
-}
-
-#notpodium {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2.5rem;
-    margin: .75rem;
-    align-items: center;
-    justify-content: center;
 }
 
 .champion-text {
@@ -59,6 +50,36 @@
 
 .team-logo, .team-name {
     width: 150px;
+}
+
+#notpodium {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+#notpodium>.team-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: .25rem;
+    padding: .5rem;
+    border: 1px solid blanchedalmond;
+    border-radius: 10px;
+    height: 85px;
+    overflow:hidden;
+}
+
+#notpodium>.team-container>.team-logo{
+    width: 50px;
+}
+
+#notpodium>.team-container>.team-name{
+    width: 75px;
 }
 
 .title-container{
