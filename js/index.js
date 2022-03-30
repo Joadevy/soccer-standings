@@ -57,7 +57,17 @@ function encodeQueryData(data){
 const addChampionText = (fatherElement) => {
     let element = document.createElement('p');
     element.classList.add('champion-text');
-    element.textContent = 'Champion';
+    if (selectedLeague.value == 'eng.1'|| selectedLeague.value == 'fra.1'){
+        element.textContent = 'Champion';
+    } else if (selectedLeague.value =='ita.1'){
+        element.textContent = 'Campione';
+    } else if (selectedLeague.value =='ger.1'){
+        element.textContent = 'Meister';
+    } else if (selectedLeague.value =='arg.1'){
+        element.textContent = 'Campeón';
+    } else if (selectedLeague.value =='bra.1'){
+        element.textContent = 'Campeão';
+    } 
     fatherElement.appendChild(element);
 }
 
