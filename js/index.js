@@ -53,19 +53,12 @@ function encodeQueryData(data){
 
 /* ---------------  General functions --------------- */
 
-// Add the 'champion' in the language of the league.
-const translateChampion = (element,league) => {
-    if (league == 'arg.1'){
-        element.textContent = 'Campeón';
-    } else if (league  == 'ger.1'){
-        element.textContent = 'Siéger';
-    } else if (league  == 'ita.1'){
-        element.textContent = 'Campione';
-    } else if (league  == 'bra.1'){
-        element.textContent = 'Campeão';
-    } else { 
-        element.textContent = 'Champion'; // for eng.1 && fra.1
-    }
+// Add the 'champion' for the first element.
+const addChampionText = (fatherElement) => {
+    let element = document.createElement('p');
+    element.classList.add('champion-text');
+    element.textContent = 'Champion';
+    fatherElement.appendChild(element);
 }
 
 // Creating the function for handling the elements of the API response (logo and name of each team)
@@ -84,11 +77,11 @@ const createDiv_With_Logo_And_Name= () => {
 // Filtering by podium or not teams.
 const filterTeams = (arrayTeams) => {
             const [winner,secondplace,thirdplace, ...arrayNotPodium] = arrayTeams; // Creating the variables using destructuring
-            addTeams(arrayNotPodium,'notpodium');
+            notPodium(arrayNotPodium);
             podium(winner,secondplace,thirdplace); 
 }
 
-const addTeams = (array,typeTeams) =>{
+const addTeams = (array) =>{
     let fragment = document.createDocumentFragment();
     for (let team in array) {
                     let div = createDiv_With_Logo_And_Name();
@@ -98,28 +91,36 @@ const addTeams = (array,typeTeams) =>{
                     name.textContent = array[team].team.name; // Linking the team name's from the API.
                     fragment.appendChild(div);
     }
-    if (typeTeams == 'podium'){
+    return fragment
+}
 
-    } else if (typeTeams == 'notpodium'){
-        printNotPodium(fragment);
+const printTeams = (fragment,typeTeams) => {
+    if (typeTeams == 'notpodium'){
+        if (notPodiumContainer.firstElementChild == ''){
+            notPodiumContainer.appendChild(fragment); // Rendering in the HTML.
+        } else {
+            notPodiumContainer.textContent = ''; // Removing the previous teams/logos.
+            notPodiumContainer.appendChild(fragment); // Rendering in the HTML.
+        }
+    } else if (typeTeams == 'podium'){
+        if (podiumContainer.firstElementChild == ''){
+            podiumContainer.appendChild(fragment); // Rendering in the HTML.
+        } else {
+            podiumContainer.textContent = ''; // Removing the previous teams/logos.
+            podiumContainer.appendChild(fragment); // Rendering in the HTML.
+        }
+        addChampionText(podiumContainer.firstElementChild)
     }
 }
 
-const printNotPodium = (fragment) => {
-    if (notPodiumContainer.firstElementChild == ''){
-        notPodiumContainer.appendChild(fragment); // Rendering in the HTML.
-    } else {
-        notPodiumContainer.textContent = ''; // Removing the previous teams/logos.
-        notPodiumContainer.appendChild(fragment); // Rendering in the HTML.
-    }
-}
-
-// Handling the podium
+// Handling the podium teams.
 const podium = (...arrPodium) => {
-    console.log(arrPodium); // Its an array with the winner, second and thirdplace
-    //console.log(winner.team.logos[0].href);
-    console.log(winner.team.name);
-    console.log(secondplace.team.name);
-    console.log(thirdplace.team.name);
-    //console.log(secondplace,thirdplace);
+    let fragment = addTeams(arrPodium);
+    printTeams(fragment,'podium');
+}
+
+// Handling the not podium teams.
+const notPodium = (array) => {
+    let fragment = addTeams(array);
+    printTeams(fragment,'notpodium');
 }
