@@ -61,6 +61,11 @@
     justify-content: center;
 }
 
+#notpodium>p{
+    display: inline-block;
+}
+
+
 #notpodium>.team-container{
     display: flex;
     flex-direction: row;
