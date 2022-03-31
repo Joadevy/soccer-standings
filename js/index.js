@@ -105,11 +105,21 @@ const addTeams = (array) =>{
 }
 
 const printTeams = (fragment,typeTeams) => {
+    // 
+    let textPodium = document.createElement('P');
+    textPodium.textContent = 'Podium';
+    textPodium.classList.add('text-podium');
+    let textNotPodium = document.createElement('P');
+    textNotPodium.textContent = 'Rest of teams';
+    textNotPodium.classList.add('text-not-podium');
+
     if (typeTeams == 'notpodium'){
         if (notPodiumContainer.firstElementChild == ''){
-            notPodiumContainer.appendChild(fragment); // Rendering in the HTML.
+            notPodiumContainer.appendChild(textNotPodium);
+           notPodiumContainer.appendChild(fragment); // Rendering in the HTML.
         } else {
             notPodiumContainer.textContent = ''; // Removing the previous teams/logos.
+            notPodiumContainer.appendChild(textNotPodium);
             notPodiumContainer.appendChild(fragment); // Rendering in the HTML.
         }
     } else if (typeTeams == 'podium'){
