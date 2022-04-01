@@ -2,6 +2,7 @@
 let container = document.getElementById('info');
 let selectedLeague = document.getElementById('select-league');
 let selectedYear = document.getElementById('select-year');
+let main = document.getElementById('main');
 let notPodiumContainer = document.getElementById('notpodium');
 let podiumContainer = document.getElementById('podium');
 
@@ -105,30 +106,16 @@ const addTeams = (array) =>{
 }
 
 const printTeams = (fragment,typeTeams) => {
-    // 
-    let textPodium = document.createElement('P');
-    textPodium.textContent = 'Podium';
-    textPodium.classList.add('text-podium');
-    let textNotPodium = document.createElement('P');
-    textNotPodium.textContent = 'Rest of teams';
-    textNotPodium.classList.add('text-not-podium');
-
     if (typeTeams == 'notpodium'){
-        if (notPodiumContainer.firstElementChild == ''){
-            notPodiumContainer.appendChild(textNotPodium);
-           notPodiumContainer.appendChild(fragment); // Rendering in the HTML.
-        } else {
+        if (notPodiumContainer.firstElementChild != ''){
             notPodiumContainer.textContent = ''; // Removing the previous teams/logos.
-            notPodiumContainer.appendChild(textNotPodium);
-            notPodiumContainer.appendChild(fragment); // Rendering in the HTML.
-        }
+        } 
+        notPodiumContainer.appendChild(fragment); // Rendering in the HTML.
     } else if (typeTeams == 'podium'){
-        if (podiumContainer.firstElementChild == ''){
-            podiumContainer.appendChild(fragment); // Rendering in the HTML.
-        } else {
-            podiumContainer.textContent = ''; // Removing the previous teams/logos.
-            podiumContainer.appendChild(fragment); // Rendering in the HTML.
-        }
+        if (podiumContainer.firstElementChild != ''){
+            podiumContainer.textContent = '';
+        } 
+        podiumContainer.appendChild(fragment); // Rendering in the HTML.
         addChampionText(podiumContainer.firstElementChild)
     }
 }
