@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+body {
+    background-image: url('http://st2.depositphotos.com/4196725/6756/i/450/depositphotos_67569405-green-grass-texture-or-background.jpg');
+    color: aliceblue;
+}
+
 #podium {
     margin: 0 auto;
     height: 35vh;
@@ -46,6 +51,7 @@
     border: 1px solid blanchedalmond;
     border-radius: 10px;
     height: 200px;
+    background-color: rgb(23, 36, 21);
 }
 
 .team-logo, .team-name {
