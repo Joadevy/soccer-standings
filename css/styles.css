@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500&family=Quicksand&family=Staatliches&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -11,29 +13,49 @@ body {
     flex-direction: column;
 }
 
-#landingimg {   
-    width: 200px;
+#landingimg {  
+    width: 25%;
     z-index: 10;
     align-self: center;
     position: absolute;
     bottom: 30%;
-    animation-name: zoom;
-    animation-duration: 4s;
-	animation-iteration-count: infinite;
+    animation: rotation 10s infinite linear;
 }
 
-@keyframes zoom {
-	0% {width: 200px;}
-	50% {width: 210px;}
-	100% {width: 200px;}
-}
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
 
 #landingimg:hover{
     cursor: pointer;
 }
 
 .landingimgopacity {
-    display: none;
+    opacity: 0%;
+    visibility: hidden;
+    transition: opacity .5s linear, visibility 1s;
+}
+
+.title-container{
+    text-align: center;
+}
+
+.title-container>h1{
+    font-family: 'Staatliches',Arial, Helvetica, sans-serif;
+    color: white;
+    margin-top: 1rem;
+    font-size: 2.5rem;
+}
+
+.title-container>p{
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
 .hidden {
@@ -54,10 +76,11 @@ body {
     gap: .75rem;
     position: relative;
     width: 500px; /* It needs to change for responsive */
+    height: 250px;
 }
 
 #podium>:first-child {
-    border:1.5px solid goldenrod;
+    border:1.5px solid rgb(250, 187, 28);
     position: absolute;
 }
 
@@ -70,7 +93,7 @@ body {
 
 #podium>:last-child{
     position: absolute;
-    border:1.5px solid darkgoldenrod;
+    border:1.5px solid rgb(141, 107, 22);
     right: 0;
     bottom: 0;
 }
@@ -84,10 +107,11 @@ body {
     display: flex;
     flex-direction: column;
     text-align: center;
-    border: 1px solid blanchedalmond;
     border-radius: 10px;
     height: 200px;
     background-color: rgb(23, 36, 21);
+    font-family: 'Quicksand',sans-serif;
+    font-size: .8rem;
 }
 
 .team-logo, .team-name {
@@ -107,7 +131,6 @@ body {
     display: inline-block;
 }
 
-
 #notpodium>.team-container{
     display: flex;
     flex-direction: row;
@@ -115,7 +138,7 @@ body {
     align-items: center;
     gap: .25rem;
     padding: .5rem;
-    border: 1px solid blanchedalmond;
+    border: 1px solid rgb(172, 255, 99);
     border-radius: 10px;
     height: 85px;
     overflow:hidden;
@@ -126,7 +149,7 @@ body {
 }
 
 #notpodium>.team-container>.team-name{
-    width: 75px;
+    width: 85px;
 }
 
 .title-container{
