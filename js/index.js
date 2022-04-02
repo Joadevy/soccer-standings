@@ -5,6 +5,7 @@ let selectedYear = document.getElementById('select-year');
 let main = document.getElementById('main');
 let notPodiumContainer = document.getElementById('notpodium');
 let podiumContainer = document.getElementById('podium');
+let landingImage = document.getElementById('landingimg');
 
 
 /* --------------- Handling the event listeners --------------- */
@@ -12,6 +13,7 @@ let podiumContainer = document.getElementById('podium');
 // Setting the listener for each select to start the requests.
 selectedYear.addEventListener("click", () => startRequest());
 selectedLeague.addEventListener("click", () => startRequest());
+landingImage.addEventListener("click",() => displayMain());
 
 
 /* --------------- Handling API data requests --------------- */
@@ -130,4 +132,18 @@ const podium = (...arrPodium) => {
 const notPodium = (array) => {
     let fragment = addTeams(array);
     printTeams(fragment,'notpodium');
+}
+
+function showSearchBox() {
+	mainimg.classList.replace('landingimg', 'landingimgopacity');
+	setTimeout(function () {footer.classList.replace('footerhidden', 'footershow');}, 900)
+	setTimeout(function () {mainimg.classList.add('mainimgdisplay');}, 900)
+	setTimeout(function () {cont.classList.remove('contenedordisplay');}, 900)
+	setTimeout(function () {cont.classList.remove('contenedoropacity');}, 950);
+}
+
+const displayMain = () => {
+    //console.log(main.classList.contains('hidden'));
+    setTimeout(() => main.classList.replace('hidden','displaying'),800)
+    landingImage.classList.replace('landingimg', 'landingimgopacity');
 }
