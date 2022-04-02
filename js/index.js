@@ -134,16 +134,7 @@ const notPodium = (array) => {
     printTeams(fragment,'notpodium');
 }
 
-function showSearchBox() {
-	mainimg.classList.replace('landingimg', 'landingimgopacity');
-	setTimeout(function () {footer.classList.replace('footerhidden', 'footershow');}, 900)
-	setTimeout(function () {mainimg.classList.add('mainimgdisplay');}, 900)
-	setTimeout(function () {cont.classList.remove('contenedordisplay');}, 900)
-	setTimeout(function () {cont.classList.remove('contenedoropacity');}, 950);
-}
-
 const displayMain = () => {
-    //console.log(main.classList.contains('hidden'));
-    setTimeout(() => main.classList.replace('hidden','displaying'),800)
-    landingImage.classList.replace('landingimg', 'landingimgopacity');
+    setTimeout(() => main.classList.replace('hidden','displaying'),500)
+    landingImage.classList.toggle('landingimgopacity'),false;
 }
