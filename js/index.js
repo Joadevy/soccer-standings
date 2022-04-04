@@ -44,6 +44,7 @@ const getData = async(endpoint) => {
         filterTeams(arrayDataTeams);
     } catch (error) {
         console.log(error); // There will display an screen with the error.
+        displayError();
     }
 }
 
@@ -137,4 +138,20 @@ const notPodium = (array) => {
 const displayMain = () => {
     setTimeout(() => main.classList.replace('hidden','displaying'),500)
     landingImage.classList.toggle('landingimgopacity'),false;
+    setTimeout(() => landingImage.style.display = 'none',1500)
+}
+
+const displayError = () => {
+    if (notPodiumContainer.firstElementChild != ''){
+        notPodiumContainer.textContent = ''; // Removing the previous teams/logos.
+        podiumContainer.textContent = '';
+    }
+    let img = document.createElement('img');
+    img.src = '/assets/img/404-transformed.png';
+    img.classList.add('image-404');
+    let text = document.createElement('p');
+    text.textContent = 'There is no data available for this, please try with another season :('
+    text.classList.add('text-404');
+    notPodiumContainer.appendChild(text);
+    notPodiumContainer.appendChild(img); // Rendering in the HTML.
 }
