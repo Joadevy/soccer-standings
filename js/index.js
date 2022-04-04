@@ -8,7 +8,7 @@ let podiumContainer = document.getElementById('podium');
 let landingImage = document.getElementById('landingimg');
 
 
-/* --------------- Handling the event listeners --------------- */
+/* --------------- Event listeners --------------- */
 
 // Setting the listener for each select to start the requests.
 selectedYear.addEventListener("click", () => startRequest());
@@ -95,6 +95,7 @@ const filterTeams = (arrayTeams) => {
             podium(winner,secondplace,thirdplace); 
 }
 
+// Adding teams into a fragment.
 const addTeams = (array) =>{
     let fragment = document.createDocumentFragment();
     for (let team in array) {
@@ -108,6 +109,7 @@ const addTeams = (array) =>{
     return fragment
 }
 
+// Displaying teams
 const printTeams = (fragment,typeTeams) => {
     if (typeTeams == 'notpodium'){
         if (notPodiumContainer.firstElementChild != ''){
@@ -135,12 +137,14 @@ const notPodium = (array) => {
     printTeams(fragment,'notpodium');
 }
 
+// Handling the landing ball image
 const displayMain = () => {
     setTimeout(() => main.classList.replace('hidden','displaying'),500)
     landingImage.classList.toggle('landingimgopacity'),false;
     setTimeout(() => landingImage.style.display = 'none',1500)
 }
 
+// Displaying a 404 error if there is not data returned from the request.
 const displayError = () => {
     if (notPodiumContainer.firstElementChild != ''){
         notPodiumContainer.textContent = ''; // Removing the previous teams/logos.
