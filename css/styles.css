@@ -119,12 +119,14 @@ body {
 }
 
 #notpodium {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     margin-top: 1.5rem;
     align-items: center;
     justify-content: center;
+    padding-bottom: .75rem;
 }
 
 #notpodium>p{
@@ -157,6 +159,22 @@ body {
     flex-direction: column;
     align-items: center;
     margin-bottom: 1rem;
+}
+
+.image-404{
+    text-align: center;
+    position: absolute;
+}
+
+.text-404{
+    font-family: 'Quicksand',sans-serif;
+    z-index: 10;
+    font-weight: bold;
+    color: rgb(238, 203, 203);
+    font-size: 1.5rem;
+    position: absolute;
+    top: -170px;
+    text-align: center;
 }
 
 form {
