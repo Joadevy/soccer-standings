@@ -151,7 +151,7 @@ const displayError = () => {
         podiumContainer.textContent = '';
     }
     let img = document.createElement('img');
-    img.src = '/assets/img/404-transformed.png';
+    img.src = 'assets/img/404-transformed.png';
     img.classList.add('image-404');
     let text = document.createElement('p');
     text.textContent = 'There is no data available for this, please try with another season :('
