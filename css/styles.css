@@ -13,6 +13,7 @@ body {
     flex-direction: column;
 }
 
+/* ---------------  Landing Image ---------------*/
 #landingimg {  
     width: 25%;
     z-index: 10;
@@ -41,6 +42,7 @@ body {
     transition: opacity .5s linear, visibility 1s;
 }
 
+/* ---------------  Title & inputs --------------- */
 .title-container{
     text-align: center;
 }
@@ -67,6 +69,31 @@ body {
 	transition: opacity 2s;
 }
 
+form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: .75rem;
+    gap: .5rem;
+}
+
+form>select {
+    text-align: center;
+    font-size: 1rem;
+    font-family: 'Baloo 2', sans-serif;
+    background-color:rgb(23, 36, 21);
+    color: aliceblue;
+    border: .5px solid black;
+    padding: 0 .25rem 0 .25rem;
+    border-radius: 5px;
+    border: 1px solid rgb(195, 255, 142);
+}
+
+form>select:hover{
+    cursor: pointer;
+}
+
+/* ---------------  Podium teams --------------- */
+
 #podium {
     margin: 0 auto;
     height: 35vh;
@@ -81,6 +108,7 @@ body {
 
 #podium>:first-child {
     border:1.5px solid rgb(250, 187, 28);
+    box-shadow: -1px 9px 31px -1px rgba(255, 235, 13, 0.909);
     position: absolute;
 }
 
@@ -103,6 +131,7 @@ body {
     font-weight: bold;
 }
 
+/* ---------------  Team-cards for podium and not podium --------------- */
 .team-container {
     display: flex;
     flex-direction: column;
@@ -117,6 +146,8 @@ body {
 .team-logo, .team-name {
     width: 150px;
 }
+
+/* ---------------  Not podium teams  --------------- */
 
 #notpodium {
     position: relative;
@@ -161,6 +192,8 @@ body {
     margin-bottom: 1rem;
 }
 
+/* ---------------  Error 404  --------------- */
+
 .image-404{
     text-align: center;
     position: absolute;
@@ -174,16 +207,5 @@ body {
     font-size: 1.5rem;
     position: absolute;
     top: -170px;
-    text-align: center;
-}
-
-form {
-    display: flex;
-    justify-content: center;
-    margin-bottom: .75rem;
-    gap: .5rem;
-}
-
-form>select {
     text-align: center;
 }
