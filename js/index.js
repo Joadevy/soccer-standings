@@ -57,24 +57,6 @@ function encodeQueryData(data){
 
 /* ---------------  General functions --------------- */
 
-// Add the 'champion' for the first element.
-const addChampionText = (fatherElement) => {
-    let element = document.createElement('p');
-    element.classList.add('champion-text');
-    if (selectedLeague.value == 'eng.1'|| selectedLeague.value == 'fra.1'){
-        element.textContent = 'Champion';
-    } else if (selectedLeague.value =='ita.1'){
-        element.textContent = 'Campione';
-    } else if (selectedLeague.value =='ger.1'){
-        element.textContent = 'Meister';
-    } else if (selectedLeague.value =='arg.1'){
-        element.textContent = 'Campeón';
-    } else if (selectedLeague.value =='bra.1'){
-        element.textContent = 'Campeão';
-    } 
-    fatherElement.appendChild(element);
-}
-
 // Creating the function for handling the elements of the API response (logo and name of each team)
 const createDiv_With_Logo_And_Name= () => {
     let div = document.createElement('div');
@@ -123,6 +105,24 @@ const printTeams = (fragment,typeTeams) => {
         podiumContainer.appendChild(fragment); // Rendering in the HTML.
         addChampionText(podiumContainer.firstElementChild)
     }
+}
+
+// Add the 'champion' for the first element.
+const addChampionText = (fatherElement) => {
+    let element = document.createElement('p');
+    element.classList.add('champion-text');
+    if (selectedLeague.value == 'eng.1'|| selectedLeague.value == 'fra.1'){
+        element.textContent = 'Champion';
+    } else if (selectedLeague.value =='ita.1'){
+        element.textContent = 'Campione';
+    } else if (selectedLeague.value =='ger.1'){
+        element.textContent = 'Meister';
+    } else if (selectedLeague.value =='arg.1'){
+        element.textContent = 'Campeón';
+    } else if (selectedLeague.value =='bra.1'){
+        element.textContent = 'Campeão';
+    } 
+    fatherElement.appendChild(element);
 }
 
 // Handling the podium teams.
