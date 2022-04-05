@@ -11,8 +11,8 @@ let landingImage = document.getElementById('landingimg');
 /* --------------- Event listeners --------------- */
 
 // Setting the listener for each select to start the requests.
-selectedYear.addEventListener("click", () => startRequest());
-selectedLeague.addEventListener("click", () => startRequest());
+selectedYear.addEventListener("input", () => startRequest());
+selectedLeague.addEventListener("input", () => startRequest());
 landingImage.addEventListener("click",() => displayMain());
 
 
