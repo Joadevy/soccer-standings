@@ -212,6 +212,11 @@ form>select:hover{
 
 @media only screen and (max-width:500px){
 
+/* ---------------  Landing Image ---------------*/
+#landingimg {  
+    width: 60%;
+}
+
 /* ---------------  Podium teams --------------- */
     #podium {
         gap: .5rem;
