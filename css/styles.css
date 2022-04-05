@@ -7,7 +7,7 @@
 }
 
 body {
-    background-image: url('http://st2.depositphotos.com/4196725/6756/i/450/depositphotos_67569405-green-grass-texture-or-background.jpg');
+    background-image: url('../assets/pattern/pattern.jpg');
     color: aliceblue;
     display: flex;
     flex-direction: column;
@@ -44,6 +44,10 @@ body {
 
 /* ---------------  Title & inputs --------------- */
 .title-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: .75rem;
     text-align: center;
 }
 
@@ -96,7 +100,6 @@ form>select:hover{
 
 #podium {
     margin: 0 auto;
-    height: 35vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -135,6 +138,8 @@ form>select:hover{
 .team-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     border-radius: 10px;
     height: 200px;
@@ -185,13 +190,6 @@ form>select:hover{
     width: 85px;
 }
 
-.title-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
 /* ---------------  Error 404  --------------- */
 
 .image-404{
@@ -209,3 +207,58 @@ form>select:hover{
     top: -170px;
     text-align: center;
 }
+
+/* ---------------  Mobile design --------------- */
+
+@media only screen and (max-width:500px){
+
+/* ---------------  Podium teams --------------- */
+    #podium {
+        gap: .5rem;
+        width: 350px; /* It needs to change for responsive */
+        height: 200px;
+    }
+
+/* ---------------  Team-cards for podium and not podium --------------- */
+    .team-container {
+        height: 160px;
+        font-size: .8rem;
+    }
+
+    .team-logo, .team-name {
+        width: 100px;
+    }
+
+/* ---------------  Not podium teams  --------------- */
+    #notpodium {
+        gap: .75rem;
+        padding-bottom: 1rem;
+    }
+
+    #notpodium>.team-container{
+        gap: 0;
+        padding: 0rem;
+        height: 60px;
+    }
+
+    #notpodium>.team-container>.team-logo{
+        margin-left: .25rem;
+        width: 50px;
+    }
+
+    #notpodium>.team-container>.team-name{
+        margin-left: .25rem;
+        text-align: left;
+        width: 100px;
+    }
+
+/* ---------------  Error 404  --------------- */
+
+    .text-404{
+        color: rgb(238, 203, 203);
+        font-size: 1.1rem;
+        top: -200px;
+        text-align: center;
+    }
+}
+
