@@ -15,7 +15,7 @@
   - [Contact me](#got-feedback-or-any-comment-for-me)
 
 ## Overview
-This is another javascript project specially created to practice fetch requests and consuming an API. On this time I chose an app that makes requests and shows information according to the user's input. 
+This is another javascript project specially created to practice fetch requests and consuming an API. On this time I chose an app that makes requests and displays information based on user input. 
 Basically consist in an app for searching the historical standings of different football leagues.
  
 ### The challenge
