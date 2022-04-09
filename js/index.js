@@ -104,10 +104,10 @@ const printTeams = (fragment,typeTeams) => {
         if (podiumContainer.firstElementChild != ''){
             podiumContainer.textContent = '';
         } 
-        //let podiumTitle = createDiv_With_Title('Top teams of the season');
-        //podiumContainer.appendChild(podiumTitle);
+        let podiumTitle = createDiv_With_Title('Top teams of the season');
         podiumContainer.appendChild(fragment); // Rendering in the HTML.
-        addChampionText(podiumContainer.firstElementChild)
+        addChampionText(podiumContainer.firstElementChild);
+        podiumContainer.appendChild(podiumTitle);
     }
 }
 

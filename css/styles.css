@@ -47,7 +47,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: .75rem;
+    margin-bottom: .25rem;
     text-align: center;
 }
 
@@ -76,8 +76,8 @@ body {
 form {
     display: flex;
     justify-content: center;
-    margin-bottom: .75rem;
-    gap: .5rem;
+    margin-bottom: 1.25rem;
+    gap: .75rem;
 }
 
 form>select {
@@ -96,44 +96,6 @@ form>select:hover{
     cursor: pointer;
 }
 
-/* ---------------  Podium teams --------------- */
-
-#podium {
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: .75rem;
-    position: relative;
-    width: 500px; /* It needs to change for responsive */
-    height: 250px;
-}
-
-#podium>:first-child {
-    border:1.5px solid rgb(250, 187, 28);
-    box-shadow: -1px 9px 31px -1px rgba(255, 235, 13, 0.909);
-    position: absolute;
-}
-
-#podium>:nth-child(2){
-    position: absolute;
-    border:1.5px solid silver;
-    left: 0;
-    bottom: 5px;
-}
-
-#podium>:last-child{
-    position: absolute;
-    border:1.5px solid rgb(141, 107, 22);
-    right: 0;
-    bottom: 0;
-}
-
-.champion-text {
-    color: goldenrod;
-    font-weight: bold;
-}
-
 /* ---------------  Team-cards for podium and not podium --------------- */
 
 .container-title-teams{
@@ -143,9 +105,12 @@ form>select:hover{
     justify-content: center;
 }
 
-/* .container-title-teams>h2 {
-text-decoration: underline;
-} */
+ .container-title-teams>h2 {
+    font-family: 'Baloo 2';
+    text-decoration: underline;
+    text-decoration-style:double;
+    text-decoration-color: rgb(200, 255, 151);
+} 
 
 .team-container {
     display: flex;
@@ -162,6 +127,49 @@ text-decoration: underline;
 
 .team-logo, .team-name {
     width: 150px;
+}
+
+/* ---------------  Podium teams --------------- */
+
+#podium {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .75rem;
+    position: relative;
+    width: 500px; /* It needs to change for responsive */
+    height: 300px;
+}
+
+#podium>:first-child {
+    border:1.5px solid rgb(250, 187, 28);
+    box-shadow: -1px 9px 31px -1px rgba(255, 235, 13, 0.909);
+    position: absolute;
+}
+
+#podium>:nth-child(2){
+    position: absolute;
+    border:1.5px solid silver;
+    left: 0;
+    bottom: 15px;
+}
+
+#podium>:nth-child(3){
+    position: absolute;
+    border:1.5px solid rgb(141, 107, 22);
+    right: 0;
+    bottom: 0;
+}
+
+.champion-text {
+    color: goldenrod;
+    font-weight: bold;
+}
+
+#podium h2 {
+    position: absolute;
+    top: 0;
 }
 
 /* ---------------  Not podium teams  --------------- */
@@ -233,7 +241,7 @@ text-decoration: underline;
     #podium {
         gap: .5rem;
         width: 350px; /* It needs to change for responsive */
-        height: 200px;
+        height: 250px;
     }
 
 /* ---------------  Team-cards for podium and not podium --------------- */
