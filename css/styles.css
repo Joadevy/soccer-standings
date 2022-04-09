@@ -115,7 +115,6 @@ form>select:hover{
     font-family: 'Baloo 2';
     text-decoration: underline;
     text-decoration-style:double;
-    text-decoration-color: rgb(200, 255, 151);
 } 
 
 .team-container {
@@ -247,7 +246,7 @@ form>select:hover{
     #podium {
         gap: .5rem;
         width: 350px; /* It needs to change for responsive */
-        height: 250px;
+        height: 265px;
     }
 
 /* ---------------  Team-cards for podium and not podium --------------- */
