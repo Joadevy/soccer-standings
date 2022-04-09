@@ -53,6 +53,12 @@ body {
 
 .title-container>h1{
     font-family: 'Staatliches',Arial, Helvetica, sans-serif;
+   /*  background: -webkit-linear-gradient(#dfffdb, rgb(195, 255, 142)); */
+   background:-webkit-linear-gradient(#80fff0,#b6de71);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     color: white;
     margin-top: 1rem;
     font-size: 2.5rem;
