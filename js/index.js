@@ -96,12 +96,16 @@ const printTeams = (fragment,typeTeams) => {
     if (typeTeams == 'notpodium'){
         if (notPodiumContainer.firstElementChild != ''){
             notPodiumContainer.textContent = ''; // Removing the previous teams/logos.
-        } 
+        }
+        let notPodiumTitle = createDiv_With_Title('Rest of teams standings');
+        notPodiumContainer.appendChild(notPodiumTitle); 
         notPodiumContainer.appendChild(fragment); // Rendering in the HTML.
     } else if (typeTeams == 'podium'){
         if (podiumContainer.firstElementChild != ''){
             podiumContainer.textContent = '';
         } 
+        //let podiumTitle = createDiv_With_Title('Top teams of the season');
+        //podiumContainer.appendChild(podiumTitle);
         podiumContainer.appendChild(fragment); // Rendering in the HTML.
         addChampionText(podiumContainer.firstElementChild)
     }
@@ -158,4 +162,14 @@ const displayError = () => {
     text.classList.add('text-404');
     notPodiumContainer.appendChild(text);
     notPodiumContainer.appendChild(img); // Rendering in the HTML.
+}
+
+const createDiv_With_Title = (title) => {
+    let div = document.createElement('div');
+    div.classList.add('container-title-teams');
+    let h2 = document.createElement('h2');
+    h2.textContent = title;
+    h2.classList.add('title-teams');
+    div.appendChild(h2);
+    return div;
 }
