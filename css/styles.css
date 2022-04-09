@@ -135,6 +135,18 @@ form>select:hover{
 }
 
 /* ---------------  Team-cards for podium and not podium --------------- */
+
+.container-title-teams{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .container-title-teams>h2 {
+text-decoration: underline;
+} */
+
 .team-container {
     display: flex;
     flex-direction: column;
