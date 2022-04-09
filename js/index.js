@@ -155,7 +155,7 @@ const displayError = () => {
         podiumContainer.textContent = '';
     }
     let img = document.createElement('img');
-    img.src = '../assets/img/404-transformed.png';
+    img.src = 'assets/img/404-transformed.png';
     img.classList.add('image-404');
     let text = document.createElement('p');
     text.textContent = 'There is no data available for this, please try with another season :('
@@ -164,6 +164,7 @@ const displayError = () => {
     notPodiumContainer.appendChild(img); // Rendering in the HTML.
 }
 
+// Creatiing the function to build the podium/not podium section-titles.
 const createDiv_With_Title = (title) => {
     let div = document.createElement('div');
     div.classList.add('container-title-teams');
