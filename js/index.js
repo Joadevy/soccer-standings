@@ -20,7 +20,6 @@ landingImage.addEventListener("click",() => displayMain());
 
 // Saves the league and season that the user has entered and calls the function for the request.
 const startRequest = () => {
-    // let endpoint = 'https://api-football-standings.azharimm.site/leagues/';
     let endpoint = 'https://api-football-standings.azharimm.dev/leagues/';
     if (selectedLeague.value != '' && selectedYear.value != ''){ // I think It should check if the new request is different than the previous
         let league = selectedLeague.value; // ita.1, ger.1, eng.1, fra.1, arg.1, bra.1
